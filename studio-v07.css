@@ -1,0 +1,56 @@
+/* v0.7: execution inspector with real Python trace replay */
+.v7-run-inspect{background:#f2edff!important;border-color:#d8caff!important;color:#6147cc!important;font-weight:800!important}
+.v7-run-inspect:hover{background:#e8ddff!important}
+#btn-mobile-trace{display:none}
+.runtime-debugger[hidden]{display:none!important}
+.runtime-debugger{position:fixed;top:120px;right:calc(var(--inspector-width) + 22px);bottom:24px;z-index:27;width:min(430px,calc(100vw - 45px));overflow-y:auto;scrollbar-width:thin;border:1px solid #d6d9ef;background:#fff;box-shadow:0 24px 75px rgba(31,36,91,.22);border-radius:18px;color:#25304a}
+body.inspector-hidden .runtime-debugger,body.focus-mode .runtime-debugger{right:23px}
+.v7-pane-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:18px 18px 13px;border-bottom:1px solid #ececf5;background:linear-gradient(110deg,#f9f7ff 0%,#fff 76%)}
+.v7-kicker{font-size:9px;letter-spacing:1.35px;color:#8b75c0;font-weight:900}
+.v7-pane-head h3{font-size:19px;margin:4px 0 0;letter-spacing:-.5px;color:#262d4a}
+.v7-beta{display:inline-block;vertical-align:middle;font-size:9px;padding:3px 6px;border-radius:5px;margin-left:7px;background:#eee7ff;color:#694fd3;letter-spacing:0;font-weight:900}
+.v7-icon-btn{border:1px solid #e2e4ef;background:white;border-radius:9px;color:#586078;width:32px;height:32px;font-size:23px;cursor:pointer}
+.v7-trace-intro{font-size:11px;line-height:1.62;color:#77809c;padding:0 18px;margin:13px 0 12px}
+.v7-run-row{display:flex;padding:0 18px;gap:9px}
+.v7-run-row button{height:39px;border-radius:9px;font-weight:820;font-size:11px;cursor:pointer}
+.v7-run-row button:disabled{cursor:default;opacity:.42}
+.v7-primary{flex:1;border:1px solid #6756d9;background:#6756d9;color:#fff;box-shadow:0 4px 13px #6657d831}
+.v7-secondary{padding:0 17px;border:1px solid #dadcea;background:#fff;color:#646d87}
+.v7-stage{margin:12px 18px 0;padding:10px 12px;border:1px solid #e9e5f7;border-radius:9px;background:#f8f7fd;color:#615b88;font-size:10.5px;line-height:1.5}
+.v7-stage.done{background:#f0faf4;border-color:#d0f1dd;color:#27814f}.v7-stage.failed{background:#fff1f0;border-color:#f3d3d0;color:#b3504d}
+.v7-summary{display:flex;justify-content:space-between;gap:7px;margin:13px 18px;color:#717d95;font-size:10px}.v7-summary b{font-weight:900;color:#424c6a}
+.v7-step-nav{display:flex;align-items:center;gap:5px;margin:6px 18px 7px;padding:9px;background:#f8f8fe;border:1px solid #edebf7;border-radius:11px}
+.v7-step-nav button{border:1px solid #dedfee;background:#fff;border-radius:7px;min-height:32px;padding:0 9px;font-size:11px;color:#554c94;cursor:pointer;font-weight:800}
+.v7-step-nav button:disabled{opacity:.30;cursor:default}.v7-step-index{font-size:10px;color:#73809a;flex:1;text-align:center;white-space:nowrap}
+.v7-trace-slider{display:block;accent-color:#7253da;width:calc(100% - 48px);margin:13px 24px 16px;cursor:pointer}
+.v7-current-node{margin:0 18px;padding:13px;border-radius:11px;background:linear-gradient(100deg,#f1edff,#fbfaff);border:1px solid #ddd4fc;display:grid;gap:4px}
+.v7-current-node span,.v7-data-label{font-size:9px;letter-spacing:.7px;color:#7b6aba;font-weight:920}
+.v7-current-node strong{font-size:14px;color:#292c5a}.v7-current-node small{font-size:10px;color:#9299aa}
+.v7-data-label{display:flex;justify-content:space-between;align-items:center;margin:17px 18px 8px;color:#616c88;text-transform:uppercase}
+.v7-data-label span{color:#9ca4b5}
+.v7-var-list{display:grid;gap:5px;margin:0 18px;max-height:170px;overflow:auto}
+.v7-var-list>p{font-size:11px;color:#a0a6ba;margin:6px 0}
+.v7-var{display:grid;grid-template-columns:minmax(60px,.8fr) 1.2fr;gap:10px;align-items:start;padding:8px 10px;background:#fbfcff;border:1px solid #edf0f7;border-radius:8px}
+.v7-var span{font-size:11px;font-weight:850;color:#414e6f;word-break:break-all}
+.v7-var code{font-size:11px;color:#7557ae;overflow-wrap:anywhere;text-align:right}
+.v7-return{padding:8px 12px;background:#f3f8ff;border-radius:7px;font-size:11px;margin:9px 18px;color:#4a628d}.v7-return b{margin-right:7px}
+.v7-code-preview{background:#161f35;border-radius:10px;margin:0 18px;padding:8px 4px;overflow-x:auto;white-space:pre;font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:#d5e3f8}
+.v7-code-line{display:flex;align-items:baseline;gap:10px;min-width:max-content;border-radius:4px;line-height:1.85;padding-right:12px}
+.v7-code-line>span{color:#7181a1;text-align:right;width:29px;flex:none}.v7-code-line code{white-space:pre}
+.v7-code-line.current{background:#413f77;color:#fff}.v7-code-line.current>span{color:#c7c9ec}
+.v7-console{font-size:10.5px;line-height:1.55;background:#f7f9fd;border:1px solid #e6eaf2;border-radius:9px;color:#35445c;margin:0 18px;max-height:140px;overflow:auto;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.v7-trace-error{display:grid;gap:6px;margin:14px 18px;background:#fff1f0;border:1px solid #f7cfcb;border-radius:10px;padding:11px 13px;font-size:10.5px;color:#b14940}.v7-trace-error span{line-height:1.4;overflow-wrap:anywhere}
+.v7-footer-note{margin:16px 18px 18px;color:#9ba1b0;font-size:10px;line-height:1.5}
+.v7-trace-active{border:2px solid #7454e9!important;box-shadow:0 0 0 6px #9e84ff4f,0 15px 27px #6057ba33!important;z-index:8!important}
+.v7-trace-active .node-head{background:#f8f5ff}
+@media(max-width:1350px){.project-head .v7-run-inspect{padding:7px 9px!important;font-size:10px!important}.project-head-right .action-row{flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:1100px){.runtime-debugger{right:16px;top:100px}}
+@media(max-width:670px){
+ .project-head .v7-run-inspect{display:none!important}
+ #btn-mobile-trace{display:inline-flex;align-items:center}
+ .runtime-debugger{left:7px;right:7px;top:65px;bottom:8px;width:auto;max-width:none;border-radius:13px}
+ .v7-run-row button{font-size:11px}
+ .canvas-floating-tools{flex-wrap:wrap;max-width:min(290px,calc(100vw - 24px));gap:5px;bottom:40px}
+ .canvas-floating-tools .canvas-shortcut{display:none}
+ .canvas-floating-tools .canvas-float-secondary{font-size:9px;padding:6px 7px}
+}

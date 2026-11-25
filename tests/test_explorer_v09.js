@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict');
+const x=require('../data-explorer-v09.js');
+assert.equal(x.csvEscape('value'), '"value"');
+assert.equal(x.csvEscape('=SUM(A1:A2)'), '"\'=SUM(A1:A2)"');
+assert.equal(x.csvEscape(' +123'), '"\' +123"');
+assert.equal(x.csvEscape('he said "hi"'),'"he said ""hi"""');
+assert(x.sampleCsv({kind:'table',columns:['Name','Score'],rows:[['Ada',12],['Alan',4]]}).includes('"Ada","12"'));
+assert.equal(x.sampleCsv({kind:'scalar',value:15}), '');
+assert(x.sampleMatches(['banana','apple'],'ban'));
+assert(!x.sampleMatches(['banana','apple'],'pear'));
+assert.equal(x.getActionPlan('ZeroDivisionError').title,'Check the divisor');
+assert.equal(x.getActionPlan('NameError').steps.length,3);
+assert.equal(x.getActionPlan('UnknownError').steps.length,3);
+console.log('PASS v0.9 CSV-safe export, recorded-sample search, guided error steps');

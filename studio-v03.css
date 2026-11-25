@@ -1,0 +1,81 @@
+/* PyFlow Studio v0.3 — professional, full-height visual workspace */
+:root{--library-width:252px;--inspector-width:324px;--studio-purple:#6258e8;--studio-border:#e5e8f0;--studio-dark:#22263a}
+html,body{height:100%;overflow:hidden;background:#f5f6fa}
+.topbar{height:62px;padding:0 20px;border-bottom:1px solid #e7e9f1;box-shadow:0 1px 6px rgba(34,31,80,.025)}
+.brand{width:var(--library-width);max-width:270px;gap:10px}.brand-icon{height:37px;width:37px}.brand small{font-size:10px}.brand strong{font-size:17px}
+.topnav-item{font-size:12px;padding:9px 11px}.version-label{font-size:10px}
+.main-shell{display:grid;grid-template-columns:var(--library-width) minmax(0,1fr) var(--inspector-width);width:100%;height:calc(100dvh - 62px);overflow:hidden;transition:grid-template-columns .22s cubic-bezier(.2,.75,.25,1)}
+.main-shell>*{min-width:0}
+.sidebar,.inspector{position:relative;min-height:0;overflow:hidden}
+.sidebar{border-right:1px solid var(--studio-border);background:#fff}
+.sidebar-top{padding:17px 15px 0}.sidebar-title{font-size:10px;margin-bottom:13px}.library-caption{padding-bottom:8px}.sidebar-tip{padding:12px}
+.block-library{min-height:0;flex:1;overflow-y:auto}
+.sidebar-bottom{padding:12px;border-top:1px solid #f1f1f7}
+.workspace{height:100%;padding:12px 14px 12px;display:flex;flex-direction:column;gap:0;min-height:0;overflow:hidden;background:#f6f7fb}
+.project-head{flex:0 0 auto;padding:0px 3px 12px;margin:0;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.project-head h1{font-size:23px;line-height:1.2;margin:2px 0 3px}.project-subtitle{font-size:11px;line-height:1.35}
+.project-kind{font-size:9px;line-height:1.25}.project-head-right{gap:7px}.action-row{gap:7px}.project-head .btn{min-height:36px;padding:8px 11px}.save-state{font-size:10px}
+.feature-strip,.templates-section{display:none!important}
+.work-card{position:relative;flex:1 1 auto;min-height:0;margin:0;border-radius:15px;border:1px solid #e3e5ee;box-shadow:0 6px 26px #20294b0a;overflow:hidden;display:flex;flex-direction:column}
+.canvas-toolbar{flex:0 0 57px;height:57px;border-radius:15px 15px 0 0;padding:0 13px;background:#fff;gap:10px;box-shadow:0 2px 5px #1c265207;position:relative;z-index:5}
+.toolbar-left,.toolbar-right{gap:5px;min-width:0}.toolbar-right{justify-content:flex-end;flex:1;overflow-x:auto;scrollbar-width:none}.toolbar-right::-webkit-scrollbar{display:none}
+.mini-dim{color:#9195a7;font-size:10px;white-space:nowrap}.section-tab.selected{padding:8px 12px;background:#f1efff;border-radius:9px}
+.tool-button{min-width:34px;min-height:34px;padding:5px 9px;border-radius:8px;font-size:13px;white-space:nowrap}
+.tool-button.text-button,.dock-toggle{font-size:11px;font-weight:750}.tool-button:hover{border-color:#c8c2f7}
+.dock-toggle{border-color:#e8e5f9;background:#faf9ff;color:#675ed0}.dock-toggle[aria-pressed="false"]{color:#898da2;background:#fff;border-color:#e7e8f0}
+.focus-button{border:1px solid #d9d4fb;color:#5e55d8;background:#f4f1ff;font-size:11px;font-weight:780;display:flex;align-items:center;gap:5px;padding:0 12px}
+.focus-button:hover,.focus-button[aria-pressed="true"]{background:#6559e7;color:#fff;border-color:#6559e7}
+.toolbar-add{padding:8px 12px;min-height:35px}
+.canvas-viewport{height:auto!important;flex:1 1 auto;min-height:0;overflow:auto;position:relative;background-color:#fafbfe;background-image:radial-gradient(#d7dce9 .95px,transparent .95px);background-size:22px 22px;cursor:grab;overscroll-behavior:contain}
+.canvas-viewport.is-panning,.canvas-viewport.is-panning *{cursor:grabbing!important;user-select:none}
+.canvas-node{cursor:default;min-height:132px;box-shadow:0 5px 12px #17224a0f,0 14px 28px #17224a06}
+.canvas-node:hover{box-shadow:0 7px 20px #17224a20,0 14px 30px #17224a09}
+.canvas-node.selected{border:2px solid #7764f1;box-shadow:0 0 0 4px #7969ed20,0 12px 29px #524ab729}
+.node-head{height:54px;padding-top:11px}.node-head .node-title{font-size:13px;letter-spacing:-.14px}.node-head .node-category{font-size:10px;margin-top:2px}.node-desc{font-size:11.9px;line-height:1.35;min-height:41px}.node-bottom{font-size:10px;min-height:30px}
+.canvas-hint{z-index:3;max-width:450px;font-size:10px;padding:8px 12px;background:#fffffff0;border-radius:9px;box-shadow:0 3px 15px #222a5208}
+.canvas-guide{display:none}
+.canvas-footer{flex:0 0 40px;height:40px;padding:0 15px;box-shadow:0 -1px 6px #26355a04;z-index:5}
+.canvas-legend{gap:11px}.canvas-legend span{white-space:nowrap}
+.canvas-floating-tools{position:absolute;bottom:55px;left:17px;z-index:7;display:flex;align-items:center;gap:7px;pointer-events:none}
+.canvas-floating-tools>*{pointer-events:auto}.canvas-floating-tools .btn{min-height:41px;border-radius:11px;padding:10px 17px;box-shadow:0 6px 20px #6558e83b;font-size:12px}
+.canvas-float-secondary{border:1px solid #e1e3ee;background:#fff;box-shadow:0 4px 12px #292c580e;color:#565b71;padding:11px 14px;border-radius:11px;font-size:11px;font-weight:720;height:41px}
+.canvas-float-secondary:hover{background:#f7f5ff;color:#6557df;border-color:#c8c2f7}
+.canvas-shortcut{padding:10px;color:#9397aa;font-size:10px;background:#fffffff4;border:1px solid #f0f0f6;border-radius:9px;box-shadow:0 2px 11px #26305208;pointer-events:none}
+.workflow-minimap{bottom:55px;right:17px;z-index:7;border-radius:11px;width:221px;box-shadow:0 6px 22px #1e25591a}
+.minimap-title{font-size:10px}
+.results-section{flex:0 0 47px;min-height:47px;margin:9px 0 0;border-radius:11px;border:1px solid #e5e7ef;box-shadow:0 4px 14px #18234008;display:flex;flex-direction:column;overflow:hidden;transition:flex-basis .18s ease;position:relative;z-index:4}
+.results-section.results-collapsed{flex-basis:47px}
+.results-section:not(.results-collapsed){flex-basis:clamp(230px,32dvh,330px)}
+.results-top{flex:0 0 46px;height:46px;padding:0 13px;background:#fff}.result-body{flex:1;overflow:auto;max-height:none;min-height:0;padding:14px}
+.result-tab{font-size:11px}.copy-btn{font-size:11px;padding:7px 10px}
+.inspector{border-left:1px solid #e6e8f0;background:#fff;box-shadow:-3px 0 8px #2b376408}
+.inspector-head{padding:20px 19px 16px}.inspector-body{padding:18px 18px 26px;overflow:auto;min-height:0}.inspector-head h2{font-size:17px}
+.inspector-footer{padding:13px 18px 17px}
+.field label{font-size:12px}.field input,.field select,.field textarea{font-size:12px;min-height:42px}.inspector-title{font-size:10px}
+/* Hide or reveal full panels; the central canvas expands into every freed pixel. */
+body.library-hidden .main-shell{grid-template-columns:0px minmax(0,1fr) var(--inspector-width)}
+body.library-hidden .sidebar{display:none}
+body.inspector-hidden .main-shell{grid-template-columns:var(--library-width) minmax(0,1fr) 0px}
+body.inspector-hidden .inspector{display:none}
+body.library-hidden.inspector-hidden .main-shell,body.focus-mode .main-shell{grid-template-columns:0px minmax(0,1fr) 0px}
+body.focus-mode .sidebar,body.focus-mode .inspector{display:none}
+body.focus-mode .workspace{padding:9px}
+body.focus-mode .project-head{min-height:64px;padding-bottom:8px}
+body.focus-mode .results-section.results-collapsed{display:none}
+/* Drag-resizable dock boundaries */
+.dock-resizer{position:absolute;top:0;bottom:0;width:9px;cursor:col-resize;z-index:20;touch-action:none;opacity:0;transition:opacity .2s}
+.dock-resizer:hover,.dock-resizer.resizing{opacity:1;background:#7266e54d}
+#library-resizer{right:-4px}#inspector-resizer{left:-4px}
+/* Clean responsive behavior. Never shrink the canvas into an unusable narrow center. */
+@media(max-width:1440px){:root{--library-width:226px;--inspector-width:306px}.brand{width:215px}.topnav-item{padding:8px 7px}.canvas-shortcut{display:none}.project-head h1{font-size:21px}}
+@media(max-width:1150px){.brand{width:210px}.topnav-item{font-size:0}.topnav-item span{font-size:17px}.toolbar-right{gap:4px}.tool-button{padding:5px 7px}.tool-button.text-button span,.dock-toggle span{display:none}.project-head .btn span{display:none}.main-shell{grid-template-columns:var(--library-width) minmax(0,1fr) var(--inspector-width)}.workspace{padding:10px}}
+@media(max-width:950px){.main-shell,body.library-hidden .main-shell,body.inspector-hidden .main-shell,body.library-hidden.inspector-hidden .main-shell{display:block;position:relative}.workspace{width:100%;height:100%}.sidebar,.inspector{position:fixed;z-index:22;top:62px;bottom:0;width:min(360px,calc(100vw - 42px));box-shadow:0 15px 50px #121b4a2d;display:flex}.sidebar{left:0}.inspector{right:0}.dock-resizer{display:none}body.library-hidden .sidebar,body.inspector-hidden .inspector,body.focus-mode .sidebar,body.focus-mode .inspector{display:none}.work-card{min-height:0}.project-head-right .save-state{display:none}}
+@media(max-width:670px){.topbar{height:56px;padding:0 11px}.main-shell{height:calc(100dvh - 56px)}.brand strong{font-size:15px}.brand small{display:none}.brand-icon{width:34px;height:34px}.top-actions{gap:6px}.top-actions .btn{padding:6px 9px;min-height:32px;font-size:10px}.avatar,.topnav,.version-label{display:none!important}.workspace{padding:7px}.project-head{min-height:65px;gap:5px;padding:3px 2px 6px}.project-head h1{font-size:17px}.project-kind,.project-subtitle,.save-state,.project-head #btn-debug,.project-head #btn-download-py{display:none!important}.project-head .action-row .btn{min-height:31px;font-size:11px}.canvas-toolbar{padding:0 7px;gap:4px;flex:0 0 51px;height:51px}.toolbar-left{gap:3px}.toolbar-left .section-tab,.toolbar-left .mini-dim{display:none}.toolbar-add{padding:7px 8px;font-size:10px;min-height:32px}.toolbar-right{gap:2px}.toolbar-right #auto-layout,.toolbar-right #zoom-reset,.toolbar-right #btn-show-results,.toolbar-right #zoom-out,.toolbar-right #zoom-in,.toolbar-right .zoom-val,.toolbar-right .toolbar-sep{display:none}.tool-button{padding:4px 6px;font-size:12px;min-width:28px}.focus-button{padding:4px 8px}.canvas-hint{max-width:260px;top:7px;left:6px;font-size:9px}.canvas-floating-tools{bottom:49px;left:7px}.canvas-floating-tools .btn{font-size:10px;padding:8px 10px;min-height:35px}.canvas-float-secondary{height:35px;padding:7px 9px}.workflow-minimap{width:145px;bottom:49px;right:6px}.mini-area{height:49px}.canvas-footer{height:34px;flex-basis:34px}.canvas-legend{display:none}.results-section{margin-top:5px;flex-basis:45px}.results-section:not(.results-collapsed){flex-basis:260px}.result-tab{font-size:10px}.results-top{overflow:auto}.inspector,.sidebar{top:56px}}
+/* Keep grid positions stable when a dock is hidden. */
+@media(min-width:951px){.main-shell>.sidebar{grid-column:1}.main-shell>.workspace{grid-column:2}.main-shell>.inspector{grid-column:3}}
+
+.dock-close{display:none;position:absolute;top:10px;right:10px;height:34px;width:34px;border:1px solid #e5e6ef;background:#fff;color:#5d5f71;border-radius:9px;font-size:23px;line-height:1;z-index:24}
+.dock-close:hover{background:#f2efff;color:#584ee2}
+.dock-scrim{display:none}
+@media(max-width:950px){.dock-close{display:grid;place-items:center}.sidebar-top{padding-right:54px}.inspector-head{padding-right:54px}.dock-scrim.visible{display:block;position:fixed;inset:62px 0 0;background:#0c12354b;z-index:21;backdrop-filter:blur(2px)}}
+@media(max-width:670px){.dock-scrim.visible{top:56px}}

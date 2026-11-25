@@ -1,0 +1,87 @@
+/* PyFlow Studio 0.9 — canvas-first professional workspace.
+   Wide view keeps its workflow full-width; docks become temporary drawers. */
+:root{--pyflow-v09-rail:54px}
+body.editor-wide .main-shell,
+body.editor-wide.library-hidden .main-shell,
+body.editor-wide.inspector-hidden .main-shell,
+body.editor-wide.library-hidden.inspector-hidden .main-shell{display:grid;grid-template-columns:0 minmax(0,1fr) 0;width:100%;overflow:hidden}
+body.editor-wide .workspace{min-width:0;width:100%;padding:9px 12px 9px;background:#f4f6fb;overflow:hidden}
+body.editor-wide .project-head{min-height:60px;padding:0 6px 8px;gap:12px}
+body.editor-wide .project-head h1{font-size:20px;letter-spacing:-.55px;max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.editor-wide .project-kind{font-size:9px}
+body.editor-wide .project-subtitle{display:none}
+body.editor-wide .project-head-right{gap:10px;min-width:0}
+body.editor-wide .work-card{border:1px solid #dfe5f0;border-radius:13px;box-shadow:0 10px 35px rgba(34,47,89,.075);background:#fff}
+body.editor-wide .canvas-toolbar{height:53px;flex-basis:53px;padding:0 14px;gap:8px;border-bottom:1px solid #e8eaf3;box-shadow:none}
+body.editor-wide .toolbar-left{flex:0 0 auto;gap:6px}
+body.editor-wide .toolbar-left .section-tab,
+body.editor-wide .toolbar-left .mini-dim{display:none}
+body.editor-wide .toolbar-sep{margin:0 3px;opacity:.55}
+body.editor-wide .toolbar-right{justify-content:flex-end;gap:5px;overflow:visible;min-width:0}
+body.editor-wide .toolbar-right #auto-layout,
+body.editor-wide .toolbar-right #zoom-reset,
+body.editor-wide .toolbar-right #undo,
+body.editor-wide .toolbar-right #redo,
+body.editor-wide .toolbar-right .toolbar-sep{display:none}
+body.editor-wide .toolbar-right .tool-button{min-height:34px}
+body.editor-wide .tool-button.focus-button{background:#fff;color:#5b6292;border-color:#e3e6f1}
+body.editor-wide #wide-toggle{border:1px solid #c5cafa;background:#f0efff;color:#5143c4;font-weight:800;padding:0 12px;min-height:36px;border-radius:8px;font-size:11px;white-space:nowrap}
+body.editor-wide #wide-toggle[aria-pressed=true]{box-shadow:inset 0 0 0 1px #bbb6f5}
+#wide-toggle{border:1px solid #e3e6f1;background:#fff;color:#626d84;padding:0 11px;min-height:35px;border-radius:8px;font-size:11px;font-weight:800;white-space:nowrap}
+#wide-toggle:hover{border-color:#a9b3ff;background:#f5f3ff;color:#5445c8}
+#wide-advanced-button{font-weight:800;font-size:19px;letter-spacing:1px}
+.wide-menu-wrap{position:relative;flex:0 0 auto}
+.wide-menu[hidden]{display:none}
+.wide-menu{position:absolute;right:0;top:calc(100% + 8px);width:220px;padding:8px;background:#fff;border:1px solid #e4e7f1;border-radius:13px;box-shadow:0 15px 45px #1c2b5740;z-index:35;display:grid;gap:3px}
+.wide-menu-title{font-size:10px;color:#959eb0;letter-spacing:.9px;font-weight:900;padding:6px 10px}
+.wide-menu button{border:0;border-radius:8px;text-align:left;background:transparent;padding:10px;color:#384c6a;font-size:12px;font-weight:650}
+.wide-menu button:hover,.wide-menu button:focus-visible{background:#f1f2ff;color:#5847d3}
+body.editor-wide .canvas-viewport{background-color:#fcfcff;background-image:radial-gradient(#d2d8e5 .85px,transparent .85px);background-size:24px 24px;min-height:0}
+body.editor-wide .canvas-hint{display:none}
+body.editor-wide .canvas-footer{height:30px;flex-basis:30px;padding:0 14px;background:#fff}
+body.editor-wide .canvas-footer .canvas-legend{display:none}
+body.editor-wide .results-section.results-collapsed{display:none}
+body.editor-wide .results-section:not(.results-collapsed){flex-basis:clamp(210px,30dvh,310px);margin-top:7px}
+body.editor-wide .workflow-minimap{width:172px;right:14px;bottom:43px;box-shadow:0 4px 16px #29315e22;opacity:.88;transition:opacity .15s}
+body.editor-wide .workflow-minimap:hover{opacity:1}
+body.editor-wide .canvas-floating-tools{bottom:45px;left:15px;gap:7px}
+body.editor-wide .canvas-floating-tools #btn-mobile-walkthrough,
+body.editor-wide .canvas-floating-tools #btn-mobile-trace,
+body.editor-wide .canvas-floating-tools .canvas-shortcut{display:none}
+body.editor-wide .canvas-floating-tools #btn-module-editor{font-size:11px;padding:9px 12px}
+body.editor-wide .canvas-floating-tools #btn-canvas-home{font-size:11px;padding:8px 10px}
+/* Drawers overlay the workspace; they never resize the canvas. */
+body.editor-wide .sidebar,
+body.editor-wide .inspector{position:fixed;z-index:30;top:62px;bottom:0;display:flex;max-width:calc(100vw - 40px);box-shadow:0 18px 60px #19213d38;transition:transform .18s ease}
+body.editor-wide .sidebar{left:0;right:auto;width:min(332px,calc(100vw - 40px));border-right:1px solid #dfe5f1;border-radius:0 15px 15px 0}
+body.editor-wide .inspector{right:0;left:auto;width:min(370px,calc(100vw - 40px));border-left:1px solid #dfe5f1;border-radius:15px 0 0 15px}
+body.editor-wide.library-hidden .sidebar,
+body.editor-wide.inspector-hidden .inspector,
+body.editor-wide.focus-mode .sidebar,
+body.editor-wide.focus-mode .inspector{display:none}
+body.editor-wide .dock-close{display:grid;place-items:center}
+body.editor-wide .sidebar-top{padding-right:56px}
+body.editor-wide .inspector-head{padding-right:55px}
+body.editor-wide .dock-resizer{display:none}
+body.editor-wide .dock-scrim.visible{display:block;position:fixed;inset:62px 0 0;background:rgba(13,22,55,.25);backdrop-filter:blur(1.7px);z-index:27}
+body.editor-wide .inspector-body{padding-bottom:26px}
+body.editor-wide .inspector-footer{background:#fff}
+/* Keep the canvas free from any left-rail overlay: tools remain in the top toolbar. */
+body.editor-wide .canvas-floating-tools #btn-canvas-add{display:none}
+body.editor-wide .canvas-floating-tools{left:15px}
+body.editor-wide .canvas-guide{display:none}
+body.editor-wide .topbar{padding:0 14px;gap:14px}
+body.editor-wide .brand{max-width:210px;width:210px}
+body.editor-wide .topnav{gap:2px}
+body.editor-wide .topnav-item{padding:8px 8px}
+@media(max-width:1250px){body.editor-wide .topnav-item{font-size:0}body.editor-wide .topnav-item span{font-size:19px}body.editor-wide .project-head .save-state{display:none}body.editor-wide .project-head h1{max-width:38vw}}
+@media(max-width:950px){body.editor-wide .main-shell{display:block;position:relative}body.editor-wide .workspace{height:100%}body.editor-wide .sidebar,body.editor-wide .inspector{top:62px}body.editor-wide .canvas-floating-tools #btn-mobile-trace{display:inline-flex}body.editor-wide .canvas-floating-tools{left:7px}}
+@media(max-width:670px){body.editor-wide .main-shell{height:calc(100dvh - 56px)}body.editor-wide .topbar{height:56px}body.editor-wide .sidebar,body.editor-wide .inspector{top:56px}body.editor-wide .dock-scrim.visible{top:56px}body.editor-wide .workspace{padding:6px}body.editor-wide .project-head{min-height:46px;padding-bottom:5px}body.editor-wide .project-head h1{font-size:17px;max-width:55vw}body.editor-wide .canvas-toolbar{padding:0 7px;flex-basis:48px;height:48px}body.editor-wide .toolbar-right{overflow-x:auto}body.editor-wide #wide-toggle{font-size:0;padding:0 8px;min-width:31px}body.editor-wide #wide-toggle::first-letter{font-size:15px}body.editor-wide .toolbar-add{display:none}body.editor-wide .workflow-minimap{display:none}body.editor-wide .canvas-footer{height:25px;flex-basis:25px}body.editor-wide .canvas-floating-tools{bottom:37px;left:7px}body.editor-wide .canvas-floating-tools #btn-mobile-trace{display:none}body.editor-wide .canvas-floating-tools #btn-module-editor{font-size:10px;padding:7px 8px;height:35px}body.editor-wide .canvas-floating-tools #btn-canvas-home{display:none}}
+/* Ensure every hidden-dock combination remains block layout at tablet/mobile sizes. */
+@media(max-width:950px){
+ body.editor-wide .main-shell,
+ body.editor-wide.library-hidden .main-shell,
+ body.editor-wide.inspector-hidden .main-shell,
+ body.editor-wide.library-hidden.inspector-hidden .main-shell{display:block;grid-template-columns:none}
+ body.editor-wide .workspace{width:100%;min-width:0}
+}
